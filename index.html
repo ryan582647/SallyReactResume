@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Resume</title>
+</head>
+<body>
+ <script  src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <div id="resume-render"></div>
+ <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script type="text/babel">
+
+function App(props) {
+  return (
+    <body>
+        
+            <header role="banner">
+            <h1>{props.resumeName}</h1> 
+            <p>{props.briefBio}</p>
+            </header>
+        <main role="main">
+             <section>
+            <h2>Education</h2>
+            <h3>{props.college}</h3> <h3>   {props.yearsAndDegree}</h3>
+                <ul>
+                    <li>{props.collegeDescription.line1}</li>
+                    <li>{props.collegeDescription.line2}</li>
+                </ul>
+            
+            </section>
+            <section>
+            <h2><b>Work History</b></h2>
+            <h3><b>{props.workHistory.job1}</b>   {props.workYears.job1}</h3>
+                <p>{props.workDescriptions.job1}</p>
+            
+            <h3><b>{props.workHistory.job2}</b>   {props.workYears.job2}</h3>
+                <p>{props.workDescriptions.job2}</p>
+            </section>
+        </main>
+        <section>
+          <header>
+        <h3>Find me here!</h3>
+          </header>
+        <address>
+            <h4>primary email :<a href={`mailto:${props.contactInfo.email}?subject=RegardingYourApplication`} target="_blank">{props.contactInfo.email}</a></h4>
+            <h4>Phone number: <i>{props.contactInfo.phone}</i></h4>
+            <h4>Me in all my glory:</h4>
+            <img
+            src={props.resumePhoto.image}
+            alt={props.resumePhoto.alt} />
+            </address>
+        </section>
+         <footer role="contentinfo"> © 2017 Sally Seashore</footer>
+    </body>
+  );
+}
+
+ReactDOM.render(
+  <App
+  className='my-class'
+  resumeTitle="Sally Seashore's Resume!"
+  resumeName="Sally Edison Seashore"
+  metaName="Writer, blogger, fitness guru, and aspiring web developer from Amherst, Massachusetts."
+  briefBio="I am an aspiring web developer, learning with Thinkful so I can get a great job that I enjoy."
+  college= "University of Massachusetts, Amherst"
+  yearsAndDegree = "B.S. Mech Eng, 2012-2016"
+  collegeDescription = {{line1: "Undergraduate Research Assistant for the department of Neuroscience", line2: "Graduated Magna Cum Laude"}}
+  workHistory = {{job1: "Research Assistant, University of Massaschusetts, department of Neuroscience", job2:"Lead Barista, Starbucks"}}
+  workYears = {{job1:"2013-2017", job2:"2012 - 2015"}}
+  workDescriptions = {{job1: "I did stuff and played with peoples nerves and took a lot of notes and watched the professor do a lot of things and that made me feel satisfied with the world. Then I went home and slept.",
+  job2: "I made a lot of interesting coffee and got yelled at all the time by customers who wanted ridiculous things that I could not pull out of thin air. Overall A++ experience."
+  }}
+  contactInfo= {{email: "sallyedisonseashore@gmail.com", phone: "706-907-8897" }}
+  resumePhoto= {{image: "https://ia.media-imdb.com/images/M/MV5BMTY5NzE3NzU3MF5BMl5BanBnXkFtZTgwMjg0NTQ5MDE@._V1_UX214_CR0,0,214,317_AL_.jpg" , alt: "A picture of Ms. Sally Seashore"}}
+  />,
+
+ document.querySelector('#resume-render')
+);
+</script>
+
+</body>
+</html>
